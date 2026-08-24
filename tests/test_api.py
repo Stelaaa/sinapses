@@ -3,6 +3,7 @@ from fastapi.testclient import TestClient
 from agents.infrastructure.agent import InfrastructureAgent
 from apps.api.app.main import create_app
 from core.agents.registry import AgentRegistry
+from core.knowledge.provider import KnowledgeProvider
 from core.llm.provider import LLMProvider
 
 
@@ -11,9 +12,24 @@ class FakeLLMProvider(LLMProvider):
         return "Resposta simulada pelo provider de teste."
 
 
+class FakeKnowledgeProvider(KnowledgeProvider):
+    def load(self) -> None:
+        pass
+
+    def search(self, query: str) -> list[str]:
+        return []
+
+    def get_document(self, name: str) -> str:
+        raise KeyError(f"Documento '{name}' não encontrado.")
+
+
 def create_test_client() -> TestClient:
-    provider = FakeLLMProvider()
-    agent = InfrastructureAgent(provider)
+    llm_provider = FakeLLMProvider()
+    knowledge_provider = FakeKnowledgeProvider()
+    agent = InfrastructureAgent(
+        llm_provider=llm_provider,
+        knowledge_provider=knowledge_provider,
+    )
 
     registry = AgentRegistry()
     registry.register(agent)

@@ -1,35 +1,39 @@
-# Demo Infrastructure Services
+# Serviços da Infraestrutura — Demonstração
 
 ## API
 
-The API exposes the application interface.
+A API expõe a interface da aplicação.
 
-Its initial responsibility is to receive chat requests and return agent responses.
+Sua responsabilidade inicial é receber solicitações de chat e retornar
+as respostas dos agentes.
 
 ## Infrastructure Agent
 
-The Infrastructure Agent specializes in infrastructure knowledge.
+O Infrastructure Agent é especializado em conhecimento de infraestrutura.
 
-It receives user questions and requests relevant knowledge documents.
+Ele recebe perguntas dos usuários e solicita ao provedor de conhecimento
+os documentos relevantes.
 
-## Knowledge Provider
+## Provedor de Conhecimento
 
-The Knowledge Provider reads Markdown documents from the configured knowledge path.
+O Provedor de Conhecimento lê documentos Markdown a partir do caminho
+de conhecimento configurado.
 
-The initial implementation uses simple text retrieval.
+A implementação inicial utiliza recuperação textual simples.
 
 ## Context Builder
 
-The Context Builder combines:
+O Context Builder combina:
 
-- Agent instructions
-- Relevant knowledge
-- User question
+- Instruções do agente
+- Conhecimento relevante
+- Pergunta do usuário
 
-The resulting context is sent to the configured LLM.
+O contexto resultante é enviado ao provedor de LLM.
 
-## LLM Provider
+## Provedor de LLM
 
-The LLM Provider abstracts communication with the configured language model.
+O Provedor de LLM abstrai a comunicação com o modelo de linguagem configurado.
 
-The application core should not depend directly on a specific model provider.
+O núcleo da aplicação não deve depender diretamente de um provedor
+específico de modelo.

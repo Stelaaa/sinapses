@@ -1,25 +1,28 @@
-# Demo Infrastructure Knowledge
+# Conhecimento de Infraestrutura — Demonstração
 
-## Overview
+## Visão geral
 
-This is a fictional knowledge base used to demonstrate the Sinapses platform.
+Esta é uma base de conhecimento fictícia utilizada para demonstrar a plataforma Sinapses.
 
-## Documents
+## Documentos
 
-### Architecture
+### Arquitetura
 
 - architecture.md
-  - Overview of the fictional infrastructure architecture.
-  - Main components and their responsibilities.
+  - Visão geral da arquitetura da infraestrutura.
+  - Componentes principais e suas responsabilidades.
+  - Fluxo de uma solicitação através da plataforma.
 
-### Services
+### Serviços
 
 - services.md
-  - Description of the fictional services.
-  - Service responsibilities and relationships.
+  - Descrição dos serviços da infraestrutura.
+  - Responsabilidades e relacionamentos entre os serviços.
+  - Papel do provedor de conhecimento e do provedor de LLM.
 
-## Usage
+## Uso
 
-This knowledge base contains demonstration data only.
+Esta base de conhecimento contém apenas dados fictícios para demonstração.
 
-It must not contain real infrastructure information, credentials, private addresses, or sensitive operational data.
+Ela não deve conter informações reais de infraestrutura, credenciais,
+endereços privados ou dados operacionais sensíveis.

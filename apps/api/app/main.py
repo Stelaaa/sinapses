@@ -44,6 +44,3 @@ def create_app(agent_registry: AgentRegistry | None = None) -> FastAPI:
         )
 
     return app
-
-
-app = create_app()

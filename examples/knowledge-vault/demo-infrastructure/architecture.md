@@ -1,41 +1,44 @@
-# Demo Infrastructure Architecture
+# Arquitetura da Infraestrutura — Demonstração
 
-## Overview
+## Visão geral
 
-The fictional infrastructure is composed of a small set of containerized services.
+A infraestrutura fictícia é composta por um pequeno conjunto de serviços
+containerizados.
 
-## Components
+## Componentes
 
-### API Service
+### Serviço de API
 
-The API service receives requests from users and forwards them to the appropriate application components.
+O Serviço de API recebe solicitações dos usuários e encaminha essas
+solicitações para os componentes apropriados da aplicação.
 
-### Agent Core
+### Núcleo de Agentes
 
-The Agent Core manages agent registration and execution.
+O Núcleo de Agentes gerencia o registro e a execução dos agentes.
 
-### Knowledge Core
+### Núcleo de Conhecimento
 
-The Knowledge Core is responsible for locating and retrieving relevant Markdown documents.
+O Núcleo de Conhecimento é responsável por localizar e recuperar
+documentos Markdown relevantes.
 
-### LLM Provider
+### Provedor de LLM
 
-The LLM Provider receives the prepared context and generates the final response.
+O Provedor de LLM recebe o contexto preparado e gera a resposta final.
 
-## Request Flow
+## Fluxo de solicitação
 
-User
+Usuário
 ↓
 API
 ↓
-Agent Core
+Núcleo de Agentes
 ↓
 Infrastructure Agent
 ↓
-Knowledge Core
+Núcleo de Conhecimento
 ↓
 Context Builder
 ↓
-LLM Provider
+Provedor de LLM
 ↓
-Response
+Resposta
