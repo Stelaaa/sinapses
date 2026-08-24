@@ -99,3 +99,45 @@ def test_infrastructure_agent_includes_knowledge_content_in_prompt():
     assert "Agent Core manages agent registration and execution" in (
         llm_provider.last_prompt
     )
+class FakeContextBuilder:
+    def __init__(self):
+        self.last_instructions = None
+        self.last_question = None
+        self.last_knowledge = None
+
+    def build(
+        self,
+        *,
+        instructions: str,
+        question: str,
+        knowledge: str,
+    ) -> str:
+        self.last_instructions = instructions
+        self.last_question = question
+        self.last_knowledge = knowledge
+        return "CONTEXTO CONSTRUÍDO"
+
+
+def test_infrastructure_agent_uses_context_builder():
+    llm_provider = FakeLLMProvider()
+    knowledge_provider = FakeKnowledgeProvider()
+    context_builder = FakeContextBuilder()
+
+    agent = InfrastructureAgent(
+        llm_provider=llm_provider,
+        knowledge_provider=knowledge_provider,
+        context_builder=context_builder,
+    )
+
+    response = agent.execute("Como funciona o Agent Core?")
+
+    assert response == "Resposta simulada."
+
+    assert context_builder.last_instructions == InfrastructureAgent.instructions
+    assert context_builder.last_question == "Como funciona o Agent Core?"
+    assert (
+        context_builder.last_knowledge
+        == "Conteúdo simulado de arquitetura."
+    )
+
+    assert llm_provider.last_prompt == "CONTEXTO CONSTRUÍDO"

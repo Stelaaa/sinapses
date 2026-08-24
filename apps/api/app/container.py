@@ -2,6 +2,7 @@ import os
 
 from agents.infrastructure.agent import InfrastructureAgent
 from core.agents.registry import AgentRegistry
+from core.context import ContextBuilder
 from core.knowledge.markdown import MarkdownKnowledgeProvider
 from core.llm.ollama import OllamaProvider
 
@@ -30,9 +31,12 @@ def create_agent_registry() -> AgentRegistry:
 
     knowledge_provider.load()
 
+    context_builder = ContextBuilder()
+
     infrastructure_agent = InfrastructureAgent(
         llm_provider=llm_provider,
         knowledge_provider=knowledge_provider,
+        context_builder=context_builder,
     )
 
     registry = AgentRegistry()
