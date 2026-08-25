@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: sinapses-api
+
+    env_file:
+      - .env
+
+    network_mode: host
+
+    volumes:
+      - ./examples/knowledge-vault/demo-infrastructure:/data/knowledge:ro
+
+    restart: unless-stopped
